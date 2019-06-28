@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CanticosNeoCat</string>
+    <string name="app_title">Cânticos NeoCat</string>
+    <string name="az_title">A - Z</string>
+    <string name="etiquetas_title">Etiquetas</string>
+    <string name="liturgica_title">Litúrgica</string>
+    <string name="biblica_title">Bíblica</string>
+    <string name="cantico_title">Abraão</string>
+</resources>
