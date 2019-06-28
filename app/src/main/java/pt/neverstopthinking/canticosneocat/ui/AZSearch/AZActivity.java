@@ -77,27 +77,6 @@ public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.Cl
         searchView.setIconified(false);
         view.setVisibility(View.GONE);
     }
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.search_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                azCanticoAdapter.getFilter().filter(s);
-                return false;
-            }
-        });
-        return true;
-    }*/
 
     @Override
     public void launchIntent(String canticoNome) {

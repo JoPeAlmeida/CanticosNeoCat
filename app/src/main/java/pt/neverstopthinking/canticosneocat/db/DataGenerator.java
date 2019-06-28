@@ -45,19 +45,14 @@ public class DataGenerator {
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
                         if (tagname.equalsIgnoreCase("etiqueta")) {
-                            etiqueta = new Etiqueta();
-                            canticoEtiquetaJoin = new CanticoEtiquetaJoin();
                             String attNome = parser.getAttributeValue(null, "nome");
-                            if (!attNome.isEmpty()) {
-                                etiqueta.setNome(attNome);
-                                canticoEtiquetaJoin.setEtiquetaNome(attNome);
-                            }
                             String attCantico = parser.getAttributeValue(null, "cantico");
-                            if (!attCantico.isEmpty()) {
-                                canticoEtiquetaJoin.setCanticoNome(attCantico);
+                            if (!attNome.isEmpty() && !attCantico.isEmpty()) {
+                                etiqueta = new Etiqueta(attNome);
+                                canticoEtiquetaJoin = new CanticoEtiquetaJoin(attCantico, attNome);
+                                etiquetas.add(etiqueta);
+                                canticoEtiquetaJoins.add(canticoEtiquetaJoin);
                             }
-                            etiquetas.add(etiqueta);
-                            canticoEtiquetaJoins.add(canticoEtiquetaJoin);
                         }
                         break;
                     default:
@@ -88,10 +83,7 @@ public class DataGenerator {
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
                         if (tagname.equalsIgnoreCase("cantico")) {
-                            cantico = new Cantico();
-                            if (!parser.getAttributeValue(null, "nome").isEmpty()) {
-                                cantico.setNome(parser.getAttributeValue(null, "nome"));
-                            }
+                            cantico = new Cantico(parser.getAttributeValue(null, "nome"));
                             if (!parser.getAttributeValue(null, "referencia_biblica").isEmpty()) {
                                 cantico.setReferenciaBiblica(parser.getAttributeValue(null, "referencia_biblica"));
                             }

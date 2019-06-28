@@ -31,4 +31,8 @@ public class CanticoViewModel extends AndroidViewModel {
     }
 
     public LiveData<Cantico> getCantico() {return cantico;}
+
+    public void addEtiqueta(String etiquetaNome) {
+        repository.insertEtiquetaOfCantico(etiquetaNome, cantico.getValue().getNome());
+    }
 }

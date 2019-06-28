@@ -5,11 +5,6 @@ import androidx.room.ForeignKey;
 
 import androidx.annotation.NonNull;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import pt.neverstopthinking.canticosneocat.db.entity.Cantico;
-import pt.neverstopthinking.canticosneocat.db.entity.Etiqueta;
-
 @Entity(tableName="cantico_etiqueta_join",
         primaryKeys = {"canticoNome", "etiquetaNome"},
         foreignKeys = {
@@ -20,12 +15,33 @@ import pt.neverstopthinking.canticosneocat.db.entity.Etiqueta;
                         parentColumns = "nome",
                         childColumns = "etiquetaNome")
         })
-@Data
-@NoArgsConstructor
 public class CanticoEtiquetaJoin {
 
     @NonNull
-    public String canticoNome;
+    private String canticoNome;
     @NonNull
-    public String etiquetaNome;
+    private String etiquetaNome;
+
+    public CanticoEtiquetaJoin(@NonNull String canticoNome, @NonNull String etiquetaNome) {
+        this.canticoNome = canticoNome;
+        this.etiquetaNome = etiquetaNome;
+    }
+
+    @NonNull
+    public String getCanticoNome() {
+        return canticoNome;
+    }
+
+    public void setCanticoNome(@NonNull String canticoNome) {
+        this.canticoNome = canticoNome;
+    }
+
+    @NonNull
+    public String getEtiquetaNome() {
+        return etiquetaNome;
+    }
+
+    public void setEtiquetaNome(@NonNull String etiquetaNome) {
+        this.etiquetaNome = etiquetaNome;
+    }
 }

@@ -27,7 +27,4 @@ public interface CanticoDao {
 
     @Query("SELECT * FROM Cantico WHERE nome LIKE :query")
     LiveData<List<Cantico>> searchCanticos(String query);
-
-    @Query("SELECT COUNT(*) FROM Cantico")
-    int count();
 }

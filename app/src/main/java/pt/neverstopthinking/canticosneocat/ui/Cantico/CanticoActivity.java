@@ -1,6 +1,7 @@
 package pt.neverstopthinking.canticosneocat.ui.Cantico;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -83,6 +86,20 @@ public class CanticoActivity extends AppCompatActivity implements LifecycleOwner
                 new PhotoFullPopupWindow(getApplicationContext(), R.layout.popup_image_full, v, null, null);
             }
         });
+
+        FloatingActionButton addEtiqueta = findViewById(R.id.cantico_add_etiqueta);
+        addEtiqueta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAddEtiquetaDialog();
+            }
+        });
+    }
+
+    private void showAddEtiquetaDialog() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        AddEtiquetaFragment addEtiquetaFragment = new AddEtiquetaFragment();
+        addEtiquetaFragment.show(fragmentManager, null);
     }
 
     @Override

@@ -12,6 +12,7 @@ import pt.neverstopthinking.canticosneocat.db.dao.CanticoDao;
 import pt.neverstopthinking.canticosneocat.db.dao.CanticoEtiquetaJoinDao;
 import pt.neverstopthinking.canticosneocat.db.dao.EtiquetaDao;
 import pt.neverstopthinking.canticosneocat.db.entity.Cantico;
+import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
 import pt.neverstopthinking.canticosneocat.db.entity.Etiqueta;
 
 public class DataRepository {
@@ -19,18 +20,16 @@ public class DataRepository {
     private static DataRepository instance;
     private CanticoDao canticoDao;
     private CanticoEtiquetaJoinDao canticoEtiquetaJoinDao;
+    private EtiquetaDao etiquetaDao;
     private LiveData<List<Cantico>> canticos;
 
     public DataRepository(Application application) {
         AppDatabase database = AppDatabase.getInstance(application);
         canticoDao = database.canticoDao();
         canticos = canticoDao.getAll();
+        etiquetaDao = database.etiquetaDao();
         canticoEtiquetaJoinDao = database.canticoEtiquetaJoinDao();
     }
-
-    /*public void generateCanticos(List<Cantico> canticos) {
-        new GenerateCanticosAsyncTask(canticoDao).execute(canticos);
-    }*/
 
     public LiveData<List<Cantico>> getCanticos() {
         return canticos;
@@ -40,24 +39,28 @@ public class DataRepository {
         return canticoDao.getCantico(nome);
     }
 
-    public LiveData<List<Cantico>> searchCanticos(String query) {
-        return canticoDao.searchCanticos(query);
-    }
-
     public LiveData<List<Etiqueta>> getEtiquetasOfCantico(String canticoNome) {
         return canticoEtiquetaJoinDao.getEtiquetasForCantico(canticoNome);
     }
 
-    /*private static class GenerateCanticosAsyncTask extends AsyncTask<List<Cantico>, Void, Void> {
-        private CanticoDao canticoDao;
+    public void insertEtiquetaOfCantico(String etiquetaNome, String canticoNome) {
+        new InsertEtiquetaAsyncTask(this).execute(new String[]{etiquetaNome, canticoNome});
+    }
 
-        private  GenerateCanticosAsyncTask(CanticoDao canticoDao) {
-            this.canticoDao = canticoDao;
+    private static class InsertEtiquetaAsyncTask extends AsyncTask<String, Void, Void> {
+        private EtiquetaDao etiquetaDao;
+        private CanticoEtiquetaJoinDao canticoEtiquetaJoinDao;
+
+        private InsertEtiquetaAsyncTask(DataRepository repository) {
+            etiquetaDao = repository.etiquetaDao;
+            canticoEtiquetaJoinDao = repository.canticoEtiquetaJoinDao;
         }
+
         @Override
-        protected Void doInBackground(List<Cantico>... lists) {
-            canticoDao.insertAll(lists[0]);
+        protected Void doInBackground(String... strings) {
+            etiquetaDao.insert(new Etiqueta(strings[0]));
+            canticoEtiquetaJoinDao.insert(new CanticoEtiquetaJoin(strings[1], strings[0]));
             return null;
         }
-    }*/
+    }
 }

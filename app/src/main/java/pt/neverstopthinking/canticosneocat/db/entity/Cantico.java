@@ -5,38 +5,68 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-@Data
-@NoArgsConstructor
 public class Cantico {
 
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "nome")
-    public String nome;
+    private String nome;
 
     @ColumnInfo(name = "referencia_biblica")
-    public String referenciaBiblica;
+    private String referenciaBiblica;
 
     @ColumnInfo(name = "tempo_liturgico")
-    public String tempoLiturgico;
+    private String tempoLiturgico;
 
     @ColumnInfo(name = "pdf_path")
-    public String pdfPath;
+    private String pdfPath;
 
     @ColumnInfo(name = "audio_path")
-    public String audio_path;
+    private String audio_path;
 
+    public Cantico(String nome) {
+        this.nome = nome;
+    }
+
+    @NonNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(@NonNull String nome) {
+        this.nome = nome;
+    }
+
+    public String getReferenciaBiblica() {
+        return referenciaBiblica;
+    }
+
+    public void setReferenciaBiblica(String referenciaBiblica) {
+        this.referenciaBiblica = referenciaBiblica;
+    }
+
+    public String getTempoLiturgico() {
+        return tempoLiturgico;
+    }
+
+    public void setTempoLiturgico(String tempoLiturgico) {
+        this.tempoLiturgico = tempoLiturgico;
+    }
+
+    public String getPdfPath() {
+        return pdfPath;
+    }
+
+    public void setPdfPath(String pdfPath) {
+        this.pdfPath = pdfPath;
+    }
+
+    public String getAudio_path() {
+        return audio_path;
+    }
+
+    public void setAudio_path(String audio_path) {
+        this.audio_path = audio_path;
+    }
 }

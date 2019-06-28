@@ -1,6 +1,7 @@
 package pt.neverstopthinking.canticosneocat.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -11,7 +12,7 @@ import pt.neverstopthinking.canticosneocat.R;
 import pt.neverstopthinking.canticosneocat.ui.AZSearch.AZActivity;
 import pt.neverstopthinking.canticosneocat.viewmodel.MainViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LifecycleOwner {
 
 
     private MainViewModel mainViewModel;

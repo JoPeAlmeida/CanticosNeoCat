@@ -94,8 +94,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@color/darkbeige"/>
+            android:layout_marginTop="5dp"/>
 
         <!--<RelativeLayout
             android:layout_weight="1"

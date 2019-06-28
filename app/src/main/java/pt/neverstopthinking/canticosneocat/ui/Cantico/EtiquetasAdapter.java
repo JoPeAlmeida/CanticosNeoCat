@@ -31,7 +31,7 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
     @Override
     public void onBindViewHolder(@NonNull EtiquetaHolder holder, int position) {
         Etiqueta etiqueta = etiquetas.get(position);
-        holder.txtNome.setText(etiqueta.nome);
+        holder.txtNome.setText(etiqueta.getNome());
     }
 
     @Override

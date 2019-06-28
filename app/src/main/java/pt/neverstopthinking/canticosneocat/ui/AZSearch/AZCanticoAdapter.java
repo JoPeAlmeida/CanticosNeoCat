@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +36,8 @@ public class AZCanticoAdapter extends RecyclerView.Adapter<AZCanticoAdapter.Cant
     @Override
     public void onBindViewHolder(CanticoHolder holder, int position) {
         Cantico cantico = canticos.get(position);
-        holder.txtNome.setText(cantico.nome);
-        holder.txtTempoLiturgico.setText(cantico.tempoLiturgico);
+        holder.txtNome.setText(cantico.getNome());
+        holder.txtTempoLiturgico.setText(cantico.getTempoLiturgico());
     }
 
     @Override
@@ -61,7 +62,8 @@ public class AZCanticoAdapter extends RecyclerView.Adapter<AZCanticoAdapter.Cant
                     String filterPattern = constraint.toString().toLowerCase().trim();
 
                     for (Cantico cantico : canticosFull) {
-                        if (cantico.getNome().toLowerCase().contains(filterPattern)) {
+                        String canticoNomeNormalized = Normalizer.normalize(cantico.getNome(), Normalizer.Form.NFD).replaceAll("\\p{InCOMBINING_DIACRITICAL_MARKS}+","");
+                        if (canticoNomeNormalized.toLowerCase().contains(filterPattern)) {
                             filteredCanticos.add(cantico);
                         }
                     }
@@ -99,7 +101,7 @@ public class AZCanticoAdapter extends RecyclerView.Adapter<AZCanticoAdapter.Cant
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickListener.launchIntent(canticos.get(getAdapterPosition()).nome);
+                    clickListener.launchIntent(canticos.get(getAdapterPosition()).getNome());
                 }
             });
         }

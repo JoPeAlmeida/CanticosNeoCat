@@ -19,7 +19,6 @@ public class CanticoListViewModel extends AndroidViewModel {
     public CanticoListViewModel(Application application) {
         super(application);
         repository = new DataRepository(application);
-        //repository.generateCanticos(DataGenerator.generateCanticos(application));
         canticos = repository.getCanticos();
     }
 

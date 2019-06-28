@@ -7,26 +7,24 @@
     android:background="@color/lightbeige"
     tools:context=".ui.AZSearch.AZActivity">
 
-    <!--<EditText
-        android:id="@+id/az_search_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:hint="Procurar.."/>-->
     <RelativeLayout
         android:id="@+id/az_search_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="70dp">
         <androidx.appcompat.widget.SearchView
             android:id="@+id/az_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_centerInParent="true"
             android:visibility="gone"/>
-        <ImageView
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/search_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_search"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
             android:onClick="activateSearch"/>
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView

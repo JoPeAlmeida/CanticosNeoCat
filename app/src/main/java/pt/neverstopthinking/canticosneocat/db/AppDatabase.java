@@ -35,32 +35,13 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public synchronized static AppDatabase getInstance(final Context context) {
         if (instance == null) {
-            synchronized (AppDatabase.class) {
-                if (instance == null) {
-                    //instance = buildDatabase(context.getApplicationContext(), executors);
-                    instance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
+            instance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
                     .fallbackToDestructiveMigration()
-                            /*.addCallback(new RoomDatabase.Callback() {
-                                @Override
-                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                                    super.onCreate(db);
-                                    new PopulateDbAsynccTask(instance).execute(DataGenerator.generateCanticos(context));
-                                }
-                            })*/
                     .build();
-                    new PopulateDbAsyncTask(instance).execute(DataGenerator.generateData(context));
-                }
-            }
+            new PopulateDbAsyncTask(instance).execute(DataGenerator.generateData(context));
         }
         return instance;
     }
-
-    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-        }
-    };
 
     private static class PopulateDbAsyncTask extends AsyncTask<DataGenerator.DataHolder, Void, Void> {
         private CanticoDao canticoDao;
