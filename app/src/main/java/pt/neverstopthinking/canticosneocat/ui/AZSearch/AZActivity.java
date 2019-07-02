@@ -40,14 +40,11 @@ public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.Cl
 
         searchView = findViewById(R.id.az_search);
         searchView.setIconifiedByDefault(true);
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                ImageView iconSearch = findViewById(R.id.search_icon);
-                iconSearch.setVisibility(View.VISIBLE);
-                searchView.setVisibility(View.GONE);
-                return true;
-            }
+        searchView.setOnCloseListener(() -> {
+            ImageView iconSearch = findViewById(R.id.search_icon);
+            iconSearch.setVisibility(View.VISIBLE);
+            searchView.setVisibility(View.GONE);
+            return true;
         });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -63,12 +60,8 @@ public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.Cl
         });
 
         canticoListViewModel = ViewModelProviders.of(this).get(CanticoListViewModel.class);
-        canticoListViewModel.getCanticos().observe(this, new Observer<List<Cantico>>() {
-            @Override
-            public void onChanged(List<Cantico> canticos) {
-                //update RecyclerView
-                azCanticoAdapter.updateCanticos(canticos);
-            }
+        canticoListViewModel.getCanticos().observe(this, canticos -> {
+            azCanticoAdapter.updateCanticos(canticos);
         });
     }
 

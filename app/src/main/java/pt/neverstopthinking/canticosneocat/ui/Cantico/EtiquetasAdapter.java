@@ -3,23 +3,23 @@ package pt.neverstopthinking.canticosneocat.ui.Cantico;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import pt.neverstopthinking.canticosneocat.R;
-import pt.neverstopthinking.canticosneocat.db.entity.Etiqueta;
+import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
 
 public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.EtiquetaHolder> {
 
-    private List<Etiqueta> etiquetas = new ArrayList<>();
+    private List<CanticoEtiquetaJoin> etiquetas = new ArrayList<>();
+    private LongClickListener longClickListener;
+
+    public EtiquetasAdapter(LongClickListener longClickListener) { this.longClickListener = longClickListener;}
 
     @NonNull
     @Override
@@ -30,8 +30,8 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
 
     @Override
     public void onBindViewHolder(@NonNull EtiquetaHolder holder, int position) {
-        Etiqueta etiqueta = etiquetas.get(position);
-        holder.txtNome.setText(etiqueta.getNome());
+        CanticoEtiquetaJoin etiqueta = etiquetas.get(position);
+        holder.txtNome.setText(etiqueta.getEtiquetaNome());
     }
 
     @Override
@@ -39,9 +39,13 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
         return etiquetas == null ? 0 : etiquetas.size();
     }
 
-    public void updateEtiquetas(List<Etiqueta> etiquetas) {
+    public void updateEtiquetas(List<CanticoEtiquetaJoin> etiquetas) {
         this.etiquetas = etiquetas;
         notifyDataSetChanged();
+    }
+
+    public CanticoEtiquetaJoin getEtiquetaAt(int posiiton) {
+        return etiquetas.get(posiiton);
     }
 
     public class EtiquetaHolder extends RecyclerView.ViewHolder {
@@ -50,6 +54,14 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
         public EtiquetaHolder(View view) {
             super(view);
             txtNome = view.findViewById(R.id.cantico_item_etiqueta);
+            view.setOnLongClickListener(view1 -> {
+                longClickListener.showEditEtiquetaDialog(txtNome.getText().toString());
+                return true;
+            });
         }
+    }
+
+    public interface LongClickListener {
+        void showEditEtiquetaDialog(String etiquetaNome);
     }
 }

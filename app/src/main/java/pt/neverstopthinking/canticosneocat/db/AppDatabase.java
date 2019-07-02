@@ -36,9 +36,15 @@ public abstract class AppDatabase extends RoomDatabase {
     public synchronized static AppDatabase getInstance(final Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
+                    .addCallback(new Callback() {
+                        @Override
+                        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                            super.onCreate(db);
+                            new PopulateDbAsyncTask(instance).execute(DataGenerator.generateData(context));
+                        }
+                    })
                     .fallbackToDestructiveMigration()
                     .build();
-            new PopulateDbAsyncTask(instance).execute(DataGenerator.generateData(context));
         }
         return instance;
     }

@@ -1,11 +1,14 @@
 package pt.neverstopthinking.canticosneocat.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 
 import pt.neverstopthinking.canticosneocat.R;
@@ -15,16 +18,49 @@ import pt.neverstopthinking.canticosneocat.viewmodel.MainViewModel;
 public class MainActivity extends AppCompatActivity implements LifecycleOwner {
 
 
-    private MainViewModel mainViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        MainViewModel mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        new LoadingAsyncTask().execute();
     }
 
     public void openAZSearch(View view) {
         Intent intent = new Intent(this, AZActivity.class);
         startActivity(intent);
+    }
+
+    private class LoadingAsyncTask extends AsyncTask<Void, Integer, Void> {
+        LoadingFragment loadingFragment;
+
+        @Override
+        protected void onPreExecute() {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            loadingFragment = new LoadingFragment();
+            loadingFragment.show(fragmentManager, null);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            for (int i = 0; i <= 100; i++) {
+                SystemClock.sleep(100);
+                publishProgress(i);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            //super.onProgressUpdate(values);
+            loadingFragment.progressBar.setProgress(values[0], true);
+            loadingFragment.progressText.setText(new StringBuilder().append(values[0]).append("/100").toString());
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            loadingFragment.dismiss();
+        }
     }
 }

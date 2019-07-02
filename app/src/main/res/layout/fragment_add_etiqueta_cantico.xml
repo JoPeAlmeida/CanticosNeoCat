@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/lightbeige"
     android:layout_gravity="center"
-    tools:context=".ui.Cantico.AddEtiquetaFragment">
+    tools:context=".ui.Cantico.EtiquetaFragment">
 
     <TextView
         android:id="@+id/add_etiqueta_title"

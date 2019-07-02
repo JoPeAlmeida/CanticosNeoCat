@@ -98,12 +98,7 @@ public class AZCanticoAdapter extends RecyclerView.Adapter<AZCanticoAdapter.Cant
             super(view);
             txtNome = view.findViewById(R.id.az_item_nome);
             txtTempoLiturgico = view.findViewById(R.id.az_item_tl);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    clickListener.launchIntent(canticos.get(getAdapterPosition()).getNome());
-                }
-            });
+            view.setOnClickListener(v -> clickListener.launchIntent(canticos.get(getAdapterPosition()).getNome()));
         }
     }
 

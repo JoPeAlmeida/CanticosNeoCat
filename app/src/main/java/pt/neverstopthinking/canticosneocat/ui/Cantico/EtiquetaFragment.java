@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,35 +20,50 @@ import android.widget.EditText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import pt.neverstopthinking.canticosneocat.R;
+import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
 import pt.neverstopthinking.canticosneocat.viewmodel.CanticoViewModel;
 
 
-public class AddEtiquetaFragment extends DialogFragment {
+public class EtiquetaFragment extends DialogFragment {
     private CanticoViewModel canticoViewModel;
+    private String oldEtiquetaNome;
     private EditText etiquetaNome;
     private FloatingActionButton saveEtiquetaBtn;
     private FloatingActionButton closeEtiquetaBtn;
+    private String mode;
+
+    public static EtiquetaFragment newInstance(final String mode, String etiquetaNome) {
+        EtiquetaFragment etiquetaFragment = new EtiquetaFragment();
+        etiquetaFragment.mode = mode;
+        if (mode.equals("edit")) {
+            etiquetaFragment.oldEtiquetaNome = etiquetaNome;
+        }
+        return etiquetaFragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_etiqueta_cantico, container);
         etiquetaNome = v.findViewById(R.id.add_etiqueta_nome);
+        if (mode.equals("edit")) {
+            etiquetaNome.setText(oldEtiquetaNome);
+        }
         saveEtiquetaBtn = v.findViewById(R.id.add_etiqueta_save);
-        saveEtiquetaBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                canticoViewModel.addEtiqueta(etiquetaNome.getText().toString().trim());
-                closeFragment();
+        saveEtiquetaBtn.setOnClickListener(view -> {
+            switch (mode) {
+                case "edit":
+                    canticoViewModel.updateEtiqueta(oldEtiquetaNome, etiquetaNome.getText().toString().trim());
+                    break;
+                case "add":
+                    canticoViewModel.addEtiqueta(etiquetaNome.getText().toString().trim());
+                    break;
+                default: break;
             }
+            closeFragment();
         });
         closeEtiquetaBtn = v.findViewById(R.id.add_etiqueta_close);
-        closeEtiquetaBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                closeFragment();
-            }
-        });
+        closeEtiquetaBtn.setOnClickListener(view -> closeFragment());
         return v;
     }
 

@@ -13,10 +13,10 @@ import pt.neverstopthinking.canticosneocat.db.entity.Cantico;
 @Dao
 public interface CanticoDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Cantico cantico);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAll(List<Cantico> canticos);
 
     @Query("SELECT * FROM Cantico")

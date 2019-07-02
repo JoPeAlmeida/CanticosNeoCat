@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 import pt.neverstopthinking.canticosneocat.DataRepository;
-import pt.neverstopthinking.canticosneocat.db.DataGenerator;
 import pt.neverstopthinking.canticosneocat.db.entity.Cantico;
 
 public class CanticoListViewModel extends AndroidViewModel {
