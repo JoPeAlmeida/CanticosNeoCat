@@ -2,25 +2,22 @@ package pt.neverstopthinking.canticosneocat.ui.Cantico;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import pt.neverstopthinking.canticosneocat.R;
-import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
 import pt.neverstopthinking.canticosneocat.viewmodel.CanticoViewModel;
 
 
@@ -80,6 +77,11 @@ public class EtiquetaFragment extends DialogFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         canticoViewModel = ViewModelProviders.of(getActivity()).get(CanticoViewModel.class);
+        etiquetaNome.requestFocus();
+        etiquetaNome.postDelayed(() -> {
+            InputMethodManager keyboard = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            keyboard.showSoftInput(etiquetaNome, 0);
+        }, 200);
     }
 
     private void closeFragment() {

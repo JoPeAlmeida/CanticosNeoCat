@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
         protected void onPreExecute() {
             FragmentManager fragmentManager = getSupportFragmentManager();
             loadingFragment = new LoadingFragment();
+            loadingFragment.setCancelable(false);
             loadingFragment.show(fragmentManager, null);
         }
 
