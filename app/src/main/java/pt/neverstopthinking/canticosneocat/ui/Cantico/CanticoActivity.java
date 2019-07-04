@@ -57,10 +57,10 @@ public class CanticoActivity extends AppCompatActivity implements EtiquetasAdapt
 
         RecyclerView recyclerView = findViewById(R.id.cantico_recycler);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        etiquetasAdapter = new EtiquetasAdapter(this);
+        etiquetasAdapter = new EtiquetasAdapter();
         recyclerView.setAdapter(etiquetasAdapter);
         canticoViewModel = ViewModelProviders.of(this, new CanticoViewModelFactory(this.getApplication(), canticoNome)).get(CanticoViewModel.class);
-        canticoViewModel.getEtiquetas().observe(this, etiquetas -> etiquetasAdapter.updateEtiquetas(etiquetas));
+        canticoViewModel.getEtiquetas().observe(this, etiquetas -> etiquetasAdapter.submitList(etiquetas));
         canticoViewModel.getCantico().observe(this, cantico -> {
             txtCanticoNome.setText(cantico.getNome());
             txtCanticoReferenciaBiblica.setText(cantico.getReferenciaBiblica());
@@ -92,6 +92,7 @@ public class CanticoActivity extends AppCompatActivity implements EtiquetasAdapt
                 canticoViewModel.deleteEtiqueta(etiquetasAdapter.getEtiquetaAt(viewHolder.getAdapterPosition()).getEtiquetaNome());
             }
         }).attachToRecyclerView(recyclerView);
+        etiquetasAdapter.setLongClickListener(this);
     }
 
     private void showAddEtiquetaDialog() {
@@ -130,21 +131,15 @@ public class CanticoActivity extends AppCompatActivity implements EtiquetasAdapt
         audioPause = findViewById(R.id.audio_pause);
         audioSeekBar = findViewById(R.id.audio_seekbar);
 
-        audioPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        audioPause.setOnClickListener(view -> {
                 playerAdapter.pause();
                 view.setVisibility(View.GONE);
                 audioPlay.setVisibility(View.VISIBLE);
-            }
         });
-        audioPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                playerAdapter.play();
-                view.setVisibility(View.GONE);
-                audioPause.setVisibility(View.VISIBLE);
-            }
+        audioPlay.setOnClickListener(view -> {
+            playerAdapter.play();
+            view.setVisibility(View.GONE);
+            audioPause.setVisibility(View.VISIBLE);
         });
     }
 

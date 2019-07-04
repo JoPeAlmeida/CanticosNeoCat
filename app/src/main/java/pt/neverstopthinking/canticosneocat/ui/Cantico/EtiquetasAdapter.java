@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -13,13 +15,29 @@ import java.util.List;
 
 import pt.neverstopthinking.canticosneocat.R;
 import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
+import pt.neverstopthinking.canticosneocat.db.entity.Etiqueta;
 
-public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.EtiquetaHolder> {
+public class EtiquetasAdapter extends ListAdapter<CanticoEtiquetaJoin, EtiquetasAdapter.EtiquetaHolder> {
 
-    private List<CanticoEtiquetaJoin> etiquetas = new ArrayList<>();
     private LongClickListener longClickListener;
 
-    public EtiquetasAdapter(LongClickListener longClickListener) { this.longClickListener = longClickListener;}
+    protected EtiquetasAdapter() {
+        super(DIFF_CALLBACK);
+    }
+
+    private static final DiffUtil.ItemCallback<CanticoEtiquetaJoin> DIFF_CALLBACK = new DiffUtil.ItemCallback<CanticoEtiquetaJoin>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull CanticoEtiquetaJoin oldItem, @NonNull CanticoEtiquetaJoin newItem) {
+            return oldItem.getCanticoNome().equals(newItem.getCanticoNome()) &&
+                    oldItem.getEtiquetaNome().equals(newItem.getEtiquetaNome());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull CanticoEtiquetaJoin oldItem, @NonNull CanticoEtiquetaJoin newItem) {
+            return oldItem.getCanticoNome().equals(newItem.getCanticoNome()) &&
+                    oldItem.getEtiquetaNome().equals(newItem.getEtiquetaNome());
+        }
+    };
 
     @NonNull
     @Override
@@ -30,22 +48,12 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
 
     @Override
     public void onBindViewHolder(@NonNull EtiquetaHolder holder, int position) {
-        CanticoEtiquetaJoin etiqueta = etiquetas.get(position);
+        CanticoEtiquetaJoin etiqueta = getItem(position);
         holder.txtNome.setText(etiqueta.getEtiquetaNome());
     }
 
-    @Override
-    public int getItemCount() {
-        return etiquetas == null ? 0 : etiquetas.size();
-    }
-
-    public void updateEtiquetas(List<CanticoEtiquetaJoin> etiquetas) {
-        this.etiquetas = etiquetas;
-        notifyDataSetChanged();
-    }
-
     public CanticoEtiquetaJoin getEtiquetaAt(int posiiton) {
-        return etiquetas.get(posiiton);
+        return getItem(posiiton);
     }
 
     public class EtiquetaHolder extends RecyclerView.ViewHolder {
@@ -55,13 +63,21 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
             super(view);
             txtNome = view.findViewById(R.id.cantico_item_etiqueta);
             view.setOnLongClickListener(view1 -> {
-                longClickListener.showEditEtiquetaDialog(txtNome.getText().toString());
-                return true;
+                int position = getAdapterPosition();
+                if (longClickListener != null && position != RecyclerView.NO_POSITION) {
+                    longClickListener.showEditEtiquetaDialog(getItem(position).getEtiquetaNome());
+                    return true;
+                }
+                return false;
             });
         }
     }
 
     public interface LongClickListener {
         void showEditEtiquetaDialog(String etiquetaNome);
+    }
+
+    public void setLongClickListener(LongClickListener longClickListener) {
+        this.longClickListener = longClickListener;
     }
 }
