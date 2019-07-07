@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity
 public class Etiqueta {
 
@@ -24,5 +26,18 @@ public class Etiqueta {
 
     public void setNome(@NonNull String nome) {
         this.nome = nome;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Etiqueta etiqueta = (Etiqueta) o;
+        return nome.equals(etiqueta.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
     }
 }

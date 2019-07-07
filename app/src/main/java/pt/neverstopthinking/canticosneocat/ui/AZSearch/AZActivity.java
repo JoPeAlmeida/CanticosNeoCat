@@ -2,7 +2,6 @@ package pt.neverstopthinking.canticosneocat.ui.AZSearch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,14 +14,11 @@ import androidx.appcompat.widget.SearchView;
 
 import android.widget.ImageView;
 
-import java.util.List;
-
 import pt.neverstopthinking.canticosneocat.R;
-import pt.neverstopthinking.canticosneocat.db.entity.Cantico;
 import pt.neverstopthinking.canticosneocat.ui.Cantico.CanticoActivity;
 import pt.neverstopthinking.canticosneocat.viewmodel.CanticoListViewModel;
 
-public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.ClickListener, LifecycleOwner {
+public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.OnCanticoClickListener, LifecycleOwner {
 
     private CanticoListViewModel canticoListViewModel;
     private AZCanticoAdapter azCanticoAdapter;
@@ -35,13 +31,13 @@ public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.Cl
         RecyclerView recyclerView = findViewById(R.id.az_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        azCanticoAdapter = new AZCanticoAdapter(this);
+        azCanticoAdapter = new AZCanticoAdapter();
         recyclerView.setAdapter(azCanticoAdapter);
 
         searchView = findViewById(R.id.az_search);
         searchView.setIconifiedByDefault(true);
         searchView.setOnCloseListener(() -> {
-            ImageView iconSearch = findViewById(R.id.search_icon);
+            ImageView iconSearch = findViewById(R.id.az_search_icon);
             iconSearch.setVisibility(View.VISIBLE);
             searchView.setVisibility(View.GONE);
             return true;
@@ -63,6 +59,7 @@ public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.Cl
         canticoListViewModel.getCanticos().observe(this, canticos -> {
             azCanticoAdapter.updateCanticos(canticos);
         });
+        azCanticoAdapter.setOnCanticoClickListener(this);
     }
 
     public void activateSearch(View view) {
@@ -72,7 +69,7 @@ public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.Cl
     }
 
     @Override
-    public void launchIntent(String canticoNome) {
+    public void launchCantico(String canticoNome) {
         startActivity(new Intent(this, CanticoActivity.class).putExtra("canticoNome", canticoNome));
     }
 }

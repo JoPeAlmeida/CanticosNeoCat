@@ -7,6 +7,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.Normalizer;
@@ -20,12 +21,9 @@ public class AZCanticoAdapter extends RecyclerView.Adapter<AZCanticoAdapter.Cant
 
     private List<Cantico> canticos = new ArrayList<>();
     private List<Cantico> canticosFull;
-    private AZCanticoAdapter.ClickListener clickListener;
+    private OnCanticoClickListener onCanticoClickListener;
 
-    public AZCanticoAdapter(ClickListener clickListener) {
-        this.clickListener = clickListener;
-    }
-
+    @NonNull
     @Override
     public CanticoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -34,7 +32,7 @@ public class AZCanticoAdapter extends RecyclerView.Adapter<AZCanticoAdapter.Cant
     }
 
     @Override
-    public void onBindViewHolder(CanticoHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CanticoHolder holder, int position) {
         Cantico cantico = canticos.get(position);
         holder.txtNome.setText(cantico.getNome());
         holder.txtTempoLiturgico.setText(cantico.getTempoLiturgico());
@@ -98,11 +96,15 @@ public class AZCanticoAdapter extends RecyclerView.Adapter<AZCanticoAdapter.Cant
             super(view);
             txtNome = view.findViewById(R.id.az_item_nome);
             txtTempoLiturgico = view.findViewById(R.id.az_item_tl);
-            view.setOnClickListener(v -> clickListener.launchIntent(canticos.get(getAdapterPosition()).getNome()));
+            view.setOnClickListener(v -> onCanticoClickListener.launchCantico(canticos.get(getAdapterPosition()).getNome()));
         }
     }
 
-    public interface ClickListener {
-        void launchIntent(String nome);
+    public interface OnCanticoClickListener {
+        void launchCantico(String nome);
+    }
+
+    public void setOnCanticoClickListener(OnCanticoClickListener onCanticoClickListener) {
+        this.onCanticoClickListener = onCanticoClickListener;
     }
 }

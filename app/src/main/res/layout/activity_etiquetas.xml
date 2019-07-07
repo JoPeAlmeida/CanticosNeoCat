@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightbeige"
-    tools:context=".ui.AZSearch.AZActivity">
+    tools:context=".ui.EtiquetasSearch.EtiquetasActivity">
 
     <RelativeLayout
-        android:id="@+id/az_search_layout"
+        android:id="@+id/etiquetas_search_layout"
         android:layout_width="match_parent"
         android:layout_height="70dp">
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/az_search"
+            android:id="@+id/etiquetas_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_centerInParent="true"
             android:visibility="gone"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/az_search_icon"
+            android:id="@+id/etiquetas_search_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_search"
@@ -28,11 +28,12 @@
             android:onClick="activateSearch"/>
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/az_recycler"
+        android:id="@+id/etiquetas_main_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/az_item_layout"
-        android:layout_below="@id/az_search_layout">
+        tools:listitem="@layout/etiquetas_mainitem_layout"
+        android:layout_below="@id/etiquetas_search_layout">
 
     </androidx.recyclerview.widget.RecyclerView>
+
 </RelativeLayout>

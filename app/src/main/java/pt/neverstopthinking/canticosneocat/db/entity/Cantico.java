@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity
 public class Cantico {
 
@@ -68,5 +70,18 @@ public class Cantico {
 
     public void setAudio_path(String audio_path) {
         this.audio_path = audio_path;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cantico cantico = (Cantico) o;
+        return nome.equals(cantico.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
     }
 }

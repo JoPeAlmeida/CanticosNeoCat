@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -13,6 +14,7 @@ import android.view.View;
 
 import pt.neverstopthinking.canticosneocat.R;
 import pt.neverstopthinking.canticosneocat.ui.AZSearch.AZActivity;
+import pt.neverstopthinking.canticosneocat.ui.EtiquetasSearch.EtiquetasActivity;
 import pt.neverstopthinking.canticosneocat.viewmodel.MainViewModel;
 
 public class MainActivity extends AppCompatActivity implements LifecycleOwner {
@@ -23,12 +25,19 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MainViewModel mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        new LoadingAsyncTask().execute();
+
+        SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean firstStart = preferences.getBoolean("firstStart", true);
+        if (firstStart) new LoadingAsyncTask().execute();;
     }
 
     public void openAZSearch(View view) {
         Intent intent = new Intent(this, AZActivity.class);
         startActivity(intent);
+    }
+
+    public void openEtiquetasSearch(View view) {
+        startActivity(new Intent(this, EtiquetasActivity.class));
     }
 
     private class LoadingAsyncTask extends AsyncTask<Void, Integer, Void> {
@@ -62,6 +71,10 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
         @Override
         protected void onPostExecute(Void aVoid) {
             loadingFragment.dismiss();
+            SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("firstStart", false);
+            editor.apply();
         }
     }
 }

@@ -24,4 +24,8 @@ public class CanticoListViewModel extends AndroidViewModel {
     public LiveData<List<Cantico>> getCanticos() {
         return canticos;
     }
+
+    public LiveData<List<Cantico>> getCanticosOfEtiqueta(String nome) {
+        return repository.getCanticosOfEtiqueta(nome);
+    }
 }

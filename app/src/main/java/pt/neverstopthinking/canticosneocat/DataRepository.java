@@ -23,18 +23,16 @@ public class DataRepository {
     private CanticoDao canticoDao;
     private CanticoEtiquetaJoinDao canticoEtiquetaJoinDao;
     private EtiquetaDao etiquetaDao;
-    private LiveData<List<Cantico>> canticos;
 
     public DataRepository(Application application) {
         AppDatabase database = AppDatabase.getInstance(application);
         canticoDao = database.canticoDao();
-        canticos = canticoDao.getAll();
         etiquetaDao = database.etiquetaDao();
         canticoEtiquetaJoinDao = database.canticoEtiquetaJoinDao();
     }
 
     public LiveData<List<Cantico>> getCanticos() {
-        return canticos;
+        return canticoDao.getAll();
     }
 
     public LiveData<Cantico> getCantico(final String nome) {
@@ -43,6 +41,14 @@ public class DataRepository {
 
     public LiveData<List<CanticoEtiquetaJoin>> getEtiquetasOfCantico(String canticoNome) {
         return canticoEtiquetaJoinDao.getEtiquetasForCantico(canticoNome);
+    }
+
+    public LiveData<List<Cantico>> getCanticosOfEtiqueta(String nome) {
+        return canticoEtiquetaJoinDao.getCanticosOfEtiqueta(nome);
+    }
+
+    public LiveData<List<CanticoEtiquetaJoin.EtiquetaCanticoPair>> getEtiquetasAndTheirCanticos() {
+        return canticoEtiquetaJoinDao.getEtiquetasAndTheirCanticos();
     }
 
     public void insertEtiquetaOfCantico(String etiquetaNome, String canticoNome) {
@@ -87,13 +93,13 @@ public class DataRepository {
 
         @Override
         protected Void doInBackground(String... strings) {
-            canticoEtiquetaJoinDao.delete(new CanticoEtiquetaJoin(strings[2], strings[0]));
-            if (canticoEtiquetaJoinDao.getCountByEtiquetaNome(strings[0]) == 0) {
+            if (canticoEtiquetaJoinDao.getCountByEtiquetaNome(strings[0]) == 1) {
                 etiquetaDao.delete(new Etiqueta(strings[0]));
             }
             if (canticoEtiquetaJoinDao.getCountByEtiquetaNome(strings[1]) == 0) {
                 etiquetaDao.insert(new Etiqueta(strings[1]));
             }
+            canticoEtiquetaJoinDao.delete(new CanticoEtiquetaJoin(strings[2], strings[0]));
             canticoEtiquetaJoinDao.insert(new CanticoEtiquetaJoin(strings[2], strings[1]));
             return null;
         }
@@ -110,8 +116,9 @@ public class DataRepository {
 
         @Override
         protected Void doInBackground(String... strings) {
+            if (canticoEtiquetaJoinDao.getCountByEtiquetaNome(strings[0]) == 1) etiquetaDao.delete(new Etiqueta(strings[0]));
             canticoEtiquetaJoinDao.delete(new CanticoEtiquetaJoin(strings[1], strings[0]));
-            if (canticoEtiquetaJoinDao.getCountByEtiquetaNome(strings[0]) == 0) etiquetaDao.delete(new Etiqueta(strings[0]));
+
             return null;
         }
     }
