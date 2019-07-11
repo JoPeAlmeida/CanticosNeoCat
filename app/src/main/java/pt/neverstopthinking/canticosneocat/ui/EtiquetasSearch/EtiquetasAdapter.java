@@ -9,7 +9,9 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.Normalizer;
@@ -19,10 +21,9 @@ import java.util.List;
 import pt.neverstopthinking.canticosneocat.R;
 import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
 
-public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.EtiquetaHolder> implements Filterable {
+public class EtiquetasAdapter extends ListAdapter<CanticoEtiquetaJoin.EtiquetaCanticos, EtiquetasAdapter.EtiquetaHolder> implements Filterable {
 
     private Context context;
-    private List<CanticoEtiquetaJoin.EtiquetaCanticos> etiquetaCanticosList;
     private List<CanticoEtiquetaJoin.EtiquetaCanticos> etiquetaCanticosListFull;
     private ECAdapter ecAdapter;
     private OnEtiquetaClickListener onEtiquetaClickListener;
@@ -30,10 +31,22 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
     private RecyclerView.RecycledViewPool recycledViewPool;
 
     public EtiquetasAdapter(Context context) {
-        this.etiquetaCanticosList = new ArrayList<>();
+        super(DIFF_CALLBACK);
         this.context = context;
         recycledViewPool = new RecyclerView.RecycledViewPool();
     }
+
+    private static final DiffUtil.ItemCallback<CanticoEtiquetaJoin.EtiquetaCanticos> DIFF_CALLBACK = new DiffUtil.ItemCallback<CanticoEtiquetaJoin.EtiquetaCanticos>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull CanticoEtiquetaJoin.EtiquetaCanticos oldItem, @NonNull CanticoEtiquetaJoin.EtiquetaCanticos newItem) {
+            return oldItem.getEtiqueta().equals(newItem.getEtiqueta());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull CanticoEtiquetaJoin.EtiquetaCanticos oldItem, @NonNull CanticoEtiquetaJoin.EtiquetaCanticos newItem) {
+            return oldItem.getCanticos().equals(newItem.getCanticos());
+        }
+    };
 
     @NonNull
     @Override
@@ -43,21 +56,18 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
 
     @Override
     public void onBindViewHolder(@NonNull EtiquetasAdapter.EtiquetaHolder holder, int position) {
-        CanticoEtiquetaJoin.EtiquetaCanticos etiquetaCanticos = etiquetaCanticosList.get(position);
+        CanticoEtiquetaJoin.EtiquetaCanticos etiquetaCanticos = getItem(position);
         holder.txtNome.setText(etiquetaCanticos.getEtiqueta().getNome());
         ecAdapter = new ECAdapter(etiquetaCanticos.getCanticos(), context);
         ecAdapter.setOnCanticoClickListener(onCanticoClickListener);
         holder.recyclerView.setAdapter(ecAdapter);
         holder.recyclerView.setRecycledViewPool(recycledViewPool);
-    }
-
-    @Override
-    public int getItemCount() {
-        return etiquetaCanticosList == null ? 0 : etiquetaCanticosList.size();
+        boolean expanded = etiquetaCanticos.isExpanded();
+        holder.recyclerView.setVisibility(expanded ? View.VISIBLE : View.GONE);
     }
 
     public void updateEtiquetas(List<CanticoEtiquetaJoin.EtiquetaCanticos> etiquetaCanticosList) {
-        this.etiquetaCanticosList = etiquetaCanticosList;
+        submitList(etiquetaCanticosList);
         etiquetaCanticosListFull = new ArrayList<>(etiquetaCanticosList);
         notifyDataSetChanged();
     }
@@ -75,15 +85,20 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
             recyclerView.setLayoutManager(layoutManager);
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
+
+                CanticoEtiquetaJoin.EtiquetaCanticos etiquetaCanticos = getItem(position);
+                boolean expanded = etiquetaCanticos.isExpanded();
+                etiquetaCanticos.setExpanded(!expanded);
+                notifyItemChanged(position);
                 if (onEtiquetaClickListener != null) {
-                    onEtiquetaClickListener.toggleChildRecyclerView(position);
+                    onEtiquetaClickListener.scrollToPosiion(position);
                 }
             });
         }
     }
 
     public interface OnEtiquetaClickListener {
-        void toggleChildRecyclerView(int position);
+        void scrollToPosiion(int position);
     }
 
     public void setOnEtiquetaClickListener(OnEtiquetaClickListener onEtiquetaClickListener) {
@@ -126,8 +141,9 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
 
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            etiquetaCanticosList.clear();
-            etiquetaCanticosList.addAll((List) filterResults.values);
+            //etiquetaCanticosList.clear();
+            //etiquetaCanticosList.addAll((List) filterResults.values);
+            submitList((List)filterResults.values);
             notifyDataSetChanged();
         }
     };

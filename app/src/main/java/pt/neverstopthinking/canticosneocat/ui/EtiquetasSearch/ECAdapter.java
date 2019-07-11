@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -14,17 +16,29 @@ import java.util.List;
 import pt.neverstopthinking.canticosneocat.R;
 import pt.neverstopthinking.canticosneocat.db.entity.Cantico;
 
-public class ECAdapter extends RecyclerView.Adapter<ECAdapter.ECHolder> {
+public class ECAdapter extends ListAdapter<Cantico, ECAdapter.ECHolder> {
 
-    private List<Cantico> canticos;
     private Context context;
 
     private OnCanticoClickListener onCanticoClickListener;
 
     public ECAdapter(List<Cantico> canticos, Context context) {
-        this.canticos = canticos;
+        super(DIFF_CALLBACK);
+        submitList(canticos);
         this.context = context;
     }
+
+    private static final DiffUtil.ItemCallback<Cantico> DIFF_CALLBACK = new DiffUtil.ItemCallback<Cantico>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Cantico oldItem, @NonNull Cantico newItem) {
+            return oldItem.equals(newItem);
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Cantico oldItem, @NonNull Cantico newItem) {
+            return oldItem.getTempoLiturgico().equals(newItem.getTempoLiturgico());
+        }
+    };
 
     @NonNull
     @Override
@@ -34,16 +48,10 @@ public class ECAdapter extends RecyclerView.Adapter<ECAdapter.ECHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ECHolder holder, int position) {
-        Cantico cantico = canticos.get(position);
+        Cantico cantico = getItem(position);
         holder.txtNome.setText(cantico.getNome());
         holder.txtTempoLiturgico.setText(cantico.getTempoLiturgico());
     }
-
-    @Override
-    public int getItemCount() {
-        return canticos == null ? 0 : canticos.size();
-    }
-
 
     public class ECHolder extends RecyclerView.ViewHolder {
         public TextView txtNome;
@@ -53,7 +61,7 @@ public class ECAdapter extends RecyclerView.Adapter<ECAdapter.ECHolder> {
             super(view);
             txtNome = view.findViewById(R.id.az_item_nome);
             txtTempoLiturgico = view.findViewById(R.id.az_item_tl);
-            view.setOnClickListener(v -> onCanticoClickListener.launchCantico(canticos.get(getAdapterPosition()).getNome()));
+            view.setOnClickListener(v -> onCanticoClickListener.launchCantico(getItem(getAdapterPosition()).getNome()));
         }
     }
 

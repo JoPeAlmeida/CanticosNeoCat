@@ -1,14 +1,10 @@
 package pt.neverstopthinking.canticosneocat.db.entity;
 
-import androidx.lifecycle.MutableLiveData;
+import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
-import androidx.annotation.NonNull;
-
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -81,10 +77,12 @@ public class CanticoEtiquetaJoin {
 
         private Etiqueta etiqueta;
         private List<Cantico> canticos;
+        private boolean expanded;
 
         public EtiquetaCanticos(Etiqueta etiqueta, List<Cantico> canticos) {
             this.etiqueta = etiqueta;
             this.canticos = canticos;
+            expanded = true;
         }
 
         public Etiqueta getEtiqueta() {
@@ -93,6 +91,12 @@ public class CanticoEtiquetaJoin {
 
         public List<Cantico> getCanticos() {
             return canticos;
+        }
+
+        public boolean isExpanded() {return expanded; }
+
+        public void setExpanded(boolean expanded) {
+            this.expanded = expanded;
         }
 
         @Override

@@ -1,16 +1,16 @@
 package pt.neverstopthinking.canticosneocat.ui.EtiquetasSearch;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
 import pt.neverstopthinking.canticosneocat.R;
 import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
@@ -61,7 +61,7 @@ public class EtiquetasActivity extends AppCompatActivity implements EtiquetasAda
             etiquetasAdapter.updateEtiquetas(CanticoEtiquetaJoin.groupCanticos(etiquetaCanticoPairs));
         });
         etiquetasAdapter.setOnCanticoClickListener(this::launchCantico);
-        etiquetasAdapter.setOnEtiquetaClickListener(this::toggleChildRecyclerView);
+        etiquetasAdapter.setOnEtiquetaClickListener(this::scrollToPosiion);
     }
 
     public void activateSearch(View view) {
@@ -76,14 +76,7 @@ public class EtiquetasActivity extends AppCompatActivity implements EtiquetasAda
     }
 
     @Override
-    public void toggleChildRecyclerView(int position) {
-        EtiquetasAdapter.EtiquetaHolder etiquetaHolder = (EtiquetasAdapter.EtiquetaHolder) recyclerView.findViewHolderForAdapterPosition(position);
-        if (etiquetaHolder != null) {
-            if (etiquetaHolder.recyclerView.getVisibility() == View.VISIBLE) {
-                etiquetaHolder.recyclerView.setVisibility(View.GONE);
-            } else {
-                etiquetaHolder.recyclerView.setVisibility(View.VISIBLE);
-            }
-        }
+    public void scrollToPosiion(int position) {
+        ((LinearLayoutManager)recyclerView.getLayoutManager()).scrollToPositionWithOffset(position, 0);
     }
 }
