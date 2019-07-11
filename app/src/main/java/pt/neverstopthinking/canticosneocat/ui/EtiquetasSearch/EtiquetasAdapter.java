@@ -1,7 +1,6 @@
 package pt.neverstopthinking.canticosneocat.ui.EtiquetasSearch;
 
-import android.app.Activity;
-import android.app.Application;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,6 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,41 +17,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pt.neverstopthinking.canticosneocat.R;
-import pt.neverstopthinking.canticosneocat.db.entity.Cantico;
 import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
-import pt.neverstopthinking.canticosneocat.ui.AZSearch.AZCanticoAdapter;
-import pt.neverstopthinking.canticosneocat.viewmodel.CanticoListViewModel;
 
 public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.EtiquetaHolder> implements Filterable {
 
-    private List<CanticoEtiquetaJoin.EtiquetaCanticos> etiquetaCanticosList = new ArrayList<>();
+    private Context context;
+    private List<CanticoEtiquetaJoin.EtiquetaCanticos> etiquetaCanticosList;
     private List<CanticoEtiquetaJoin.EtiquetaCanticos> etiquetaCanticosListFull;
+    private ECAdapter ecAdapter;
     private OnEtiquetaClickListener onEtiquetaClickListener;
-    private AZCanticoAdapter.OnCanticoClickListener onCanticoClickListener;
-    private RecyclerView.RecycledViewPool recycledViewPool = new RecyclerView.RecycledViewPool();
-    private final AppCompatActivity activity;
+    private ECAdapter.OnCanticoClickListener onCanticoClickListener;
+    private RecyclerView.RecycledViewPool recycledViewPool;
 
-    public EtiquetasAdapter(AppCompatActivity activity) {
-        this.activity = activity;
+    public EtiquetasAdapter(Context context) {
+        this.etiquetaCanticosList = new ArrayList<>();
+        this.context = context;
+        recycledViewPool = new RecyclerView.RecycledViewPool();
     }
 
     @NonNull
     @Override
     public EtiquetasAdapter.EtiquetaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.etiquetas_mainitem_layout, parent, false);
-        return new EtiquetaHolder(view);
+        return new EtiquetaHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.etiquetas_mainitem_layout, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull EtiquetasAdapter.EtiquetaHolder holder, int position) {
         CanticoEtiquetaJoin.EtiquetaCanticos etiquetaCanticos = etiquetaCanticosList.get(position);
         holder.txtNome.setText(etiquetaCanticos.getEtiqueta().getNome());
-        holder.recyclerView.setLayoutManager(new LinearLayoutManager(holder.recyclerView.getContext()));
-        AZCanticoAdapter azCanticoAdapter = new AZCanticoAdapter();
-        holder.recyclerView.setAdapter(azCanticoAdapter);
-        azCanticoAdapter.setOnCanticoClickListener(onCanticoClickListener);
-        CanticoListViewModel canticoListViewModel = ViewModelProviders.of(activity).get(CanticoListViewModel.class);
-        canticoListViewModel.getCanticosOfEtiqueta(etiquetaCanticos.getEtiqueta().getNome()).observe(activity, azCanticoAdapter::updateCanticos);
+        ecAdapter = new ECAdapter(etiquetaCanticos.getCanticos(), context);
+        ecAdapter.setOnCanticoClickListener(onCanticoClickListener);
+        holder.recyclerView.setAdapter(ecAdapter);
+        holder.recyclerView.setRecycledViewPool(recycledViewPool);
     }
 
     @Override
@@ -72,11 +66,13 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
 
         public TextView txtNome;
         public RecyclerView recyclerView;
+        private LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
 
         public EtiquetaHolder(@NonNull View itemView) {
             super(itemView);
             txtNome = itemView.findViewById(R.id.etiquetas_mainitem_nome);
             recyclerView = itemView.findViewById(R.id.etiquetas_recycler);
+            recyclerView.setLayoutManager(layoutManager);
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 if (onEtiquetaClickListener != null) {
@@ -94,7 +90,7 @@ public class EtiquetasAdapter extends RecyclerView.Adapter<EtiquetasAdapter.Etiq
         this.onEtiquetaClickListener = onEtiquetaClickListener;
     }
 
-    public void setOnCanticoClickListener(AZCanticoAdapter.OnCanticoClickListener onCanticoClickListener) {
+    public void setOnCanticoClickListener(ECAdapter.OnCanticoClickListener onCanticoClickListener) {
         this.onCanticoClickListener = onCanticoClickListener;
     }
 
