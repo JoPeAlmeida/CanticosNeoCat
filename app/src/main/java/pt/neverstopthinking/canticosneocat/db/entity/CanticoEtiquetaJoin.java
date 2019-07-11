@@ -22,7 +22,7 @@ import static androidx.room.ForeignKey.CASCADE;
                         childColumns = "etiquetaNome",
                         onDelete = CASCADE)
         })
-public class CanticoEtiquetaJoin {
+public class CanticoEtiquetaJoin implements Comparable<CanticoEtiquetaJoin>{
 
     @NonNull
     private String canticoNome;
@@ -50,6 +50,12 @@ public class CanticoEtiquetaJoin {
 
     public void setEtiquetaNome(@NonNull String etiquetaNome) {
         this.etiquetaNome = etiquetaNome;
+    }
+
+    @Override
+    public int compareTo(CanticoEtiquetaJoin canticoEtiquetaJoin) {
+        if (getEtiquetaNome().isEmpty() || canticoEtiquetaJoin.getEtiquetaNome().isEmpty()) return 0;
+        return getEtiquetaNome().compareToIgnoreCase(canticoEtiquetaJoin.getEtiquetaNome());
     }
 
     public static class EtiquetaCanticoPair {
@@ -102,7 +108,7 @@ public class CanticoEtiquetaJoin {
         @Override
         public int compareTo(EtiquetaCanticos etiquetaCanticos) {
             if (getEtiqueta() == null || etiquetaCanticos.getEtiqueta() == null) return 0;
-            return getEtiqueta().getNome().compareTo(etiquetaCanticos.getEtiqueta().getNome());
+            return getEtiqueta().getNome().compareToIgnoreCase(etiquetaCanticos.getEtiqueta().getNome());
         }
     }
 

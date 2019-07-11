@@ -1,32 +1,26 @@
 package pt.neverstopthinking.canticosneocat.ui.Cantico;
 
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
-
 import pt.neverstopthinking.canticosneocat.R;
-import pt.neverstopthinking.canticosneocat.db.entity.Cantico;
 import pt.neverstopthinking.canticosneocat.db.entity.CanticoEtiquetaJoin;
-import pt.neverstopthinking.canticosneocat.db.entity.Etiqueta;
 import pt.neverstopthinking.canticosneocat.viewmodel.CanticoViewModel;
 import pt.neverstopthinking.canticosneocat.viewmodel.CanticoViewModelFactory;
 
@@ -60,7 +54,10 @@ public class CanticoActivity extends AppCompatActivity implements EtiquetasAdapt
         etiquetasAdapter = new EtiquetasAdapter();
         recyclerView.setAdapter(etiquetasAdapter);
         canticoViewModel = ViewModelProviders.of(this, new CanticoViewModelFactory(this.getApplication(), canticoNome)).get(CanticoViewModel.class);
-        canticoViewModel.getEtiquetas().observe(this, etiquetas -> etiquetasAdapter.submitList(etiquetas));
+        canticoViewModel.getEtiquetas().observe(this, etiquetas -> {
+            etiquetas.sort(CanticoEtiquetaJoin::compareTo);
+            etiquetasAdapter.submitList(etiquetas);
+        });
         canticoViewModel.getCantico().observe(this, cantico -> {
             txtCanticoNome.setText(cantico.getNome());
             txtCanticoReferenciaBiblica.setText(cantico.getReferenciaBiblica());
