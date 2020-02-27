@@ -1,5 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <canticos>
-    <cantico nome="Abraão" referencia_biblica="Gn 18, 1-5" tempo_liturgico="Tempo Comum" pdf_path="abraham" audio_path="aleluia_louvai_o_senhor"/>
-    <cantico nome="Vem do Líbano" referencia_biblica="Can 4, 8?" tempo_liturgico="Tempo Comum" pdf_path="abraham" audio_path="aleluia_louvai_o_senhor"/>
+    <cantico nome="A cabana dos pastores" referencia_biblica="" tempo_liturigco="" pdf_path="" />
+    <cantico nome="À ceia do cordeiro" referencia_biblica="" tempo_liturigco="T. Páscoa" pdf_path="" />
+    <cantico nome="A ceifa das nações" referencia_biblica="" tempo_liturigco="" pdf_path="" />
+    <cantico nome="A cordeira de Deus" referencia_biblica="" tempo_liturigco="T. Natal_T. Quaresma" pdf_path="" />
+    <cantico nome="A marcha é dura" referencia_biblica="" tempo_liturigco="T. Quaresma" pdf_path="" />
+    <cantico nome="A ninguém dêmos ocasião de tropeço" referencia_biblica="" tempo_liturigco="" pdf_path="" />
+    <cantico nome="A pomba voou" referencia_biblica="" tempo_liturigco="" pdf_path="" />
+    <cantico nome="A Ti levanto os meus olhos" referencia_biblica="" tempo_liturigco="T. Quaresma" pdf_path="" />
+    <cantico nome="A Ti, Senhor, é devido o louvor em Sião" referencia_biblica="" tempo_liturigco="T. Quaresma" pdf_path="" />
+    <cantico nome="A Ti, Senhor, elevo a minha alma" referencia_biblica="" tempo_liturigco="T. Quaresma" pdf_path="" />
+    <cantico nome="A Ti, Senhor, em meu clamor imploro" referencia_biblica="" tempo_liturigco="T. Quaresma" pdf_path="" />
+    <cantico nome="À vítima Pascal - Sequência de Páscoa" referencia_biblica="" tempo_liturigco="T. Páscoa_T. Pentecostes" pdf_path="" />
+    <cantico nome="A voz do meu amado" referencia_biblica="" tempo_liturigco="T. Páscoa" pdf_path="" />
+    <cantico nome="Abba, Pai" referencia_biblica="" tempo_liturigco="" pdf_path="" />
+    <cantico nome="Abraão" referencia_biblica="Gn 18, 1-5" tempo_liturgico="T. Comum" pdf_path="abraham" audio_path="aleluia_louvai_o_senhor"/>
+    <cantico nome="Aclamação ao Evangelho - Aleluia" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Aclamação ao Evangelho - Aleluia Pascal" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Aclamação ao Evangelho - Quaresma" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Aclamai o Senhor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Akedah" referencia_biblica="" templo_liturgico="T. Quaresma_T. Páscoa" pdf_path=""/>
+    <cantico nome="Alçai, ó portas" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Aleluia, bendizei o Senhor" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Aleluia, já veio o reino" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Aleluia, louvai o Senhor" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Amen, amen, amen" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Amo o Senhor" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Anáfora do sal" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Anáfora penitencial" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ao despertar, me saciarei do teu rosto, Senhor" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="As armas da luz" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Assim fala o Amen" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Até quando?" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ave Maria (I)" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ave Maria (II)" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Babilónia criminosa" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Balaão" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Bênção da água" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Bendirei o Senhor em todo o tempo" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Bendita és tu, Maria" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Bendito seja Deus" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Bendito sejas, Senhor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Bendiz, ó minha alma, a Javé" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Benedictus" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Cântico de Moisés" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Cântico dos três jovens" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Caritas Christi urget nos" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Chegue à tua presença o meu clamor" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Como a corça anseia" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Como condenados à morte" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Como destila o mel" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Como é maravilhoso" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Como lírio entre os cardos" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Como o impulso que sente a ira" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Como são amáveis as tuas moradas" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Consolai o meu povo" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="Cordeiro de Deus" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Credo" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Cristo é a luz" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Dayenú" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="De profundis" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Débora" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="Deus sobe entre aclamações" referencia_biblica="" templo_liturgico="T. Pentecostes" pdf_path=""/>
+    <cantico nome="Dia de repouso" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Diante d'Ele se volta o rosto - Quarto cântico do Servo" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Diante dos anjos" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Digno és de tomar o livro" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Diz o Senhor ao meu Senhor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Dizei aos de coração cansado" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Dois anjos se encontraram" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Eis o meu servo - Primeiro cântico do Servo" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Eis que o nosso espelho é o Senhor" referencia_biblica="" templo_liturgico="T. Quaresma_T. Páscoa" pdf_path=""/>
+    <cantico nome="Eis que venho em breve" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="Eli, Eli" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Esconde-me no oculto da tua tenda" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Esperei, esperei no Senhor" referencia_biblica="" templo_liturgico="T. Advento_T. Quaresma" pdf_path=""/>
+    <cantico nome="Estão cortadas minhas ataduras" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Este é o dia que actuou o Senhor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Este é o meu mandamento" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Estendo as minhas mãos" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Eu te amo, Senhor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Eu venho reunir todas as nações" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Evenu shalom alejem" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Exultai, justos, no Senhor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Felicidade para o homem" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Feliz o homem" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Filhas de Jerusalém" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Foge, ó meu amado" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Formosa és, amiga minha" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Glória a Deus no alto dos céus" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Graças a Javé" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Gritai, jubilosos" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Hino à caridade" referencia_biblica="" templo_liturgico="T. Pentecostes" pdf_path=""/>
+    <cantico nome="Hino a Cristo luz" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Hino à Cruz Gloriosa" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Hino à kenosis" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Hino da Ascenção" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Hino da Páscoa" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Hino do Advento" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="ide e anunciai aos meus irmãos" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Impropérios" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Já vem o meu Deus" referencia_biblica="" templo_liturgico="T. Natal" pdf_path=""/>
+    <cantico nome="Jacob" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Javé, tu és meu Deus" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Jerusalém reconstruída" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Jesus percorria todas as cidades" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ladainha dos Santos" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Leva-me ao céu" referencia_biblica="" templo_liturgico="T. Pentecostes" pdf_path=""/>
+    <cantico nome="Levanto os meus olhos para os montes" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Litanias Penitenciais I" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Litanias Penitenciais II" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Louvai o Senhor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Louvai o Senhor nos céus" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Magnificat" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Manifestei-Te o meu pecado" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Maria de Jasna Göra" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Maria, casa de louvor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Maria, Mãe da Igreja" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Maria, Mãe do caminho ardente" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Maria, pequena Maria" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Miserere" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Muito me perseguiram desde a juventude" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Não está aqui, ressuscitou!" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Não resistais ao mal" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Não sofras pelos malvados" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Ninguém pode servir a dois senhores" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="No meio da multidão" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Noite escura" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Noli me tangere" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="O combate escatológico" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Ó Deus, pelo teu nome, salva-me" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ó Deus, Tu és meu Deus" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="O Espírito do Senhor está sobre mim" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ó Jesus, ó meu amor" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="O lagareiro" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="O mesmo Deus" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ó morte, onde está a tua vitória?" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="O néscio pensa que Deus não existe" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="O povo que caminhava" referencia_biblica="" templo_liturgico="T. Natal" pdf_path=""/>
+    <cantico nome="O semeador" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="O Senhor anuncia uma notícia" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="O Senhor deu-me - Terceiro cântico do servo" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="O Senhor é meu pastor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ó Senhor, meu coração não é ambicioso" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Ó Senhor, nosso Deus" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Olhai que estupendo" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Oração dos pobres de Javé" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="Oração Eucarística II - Modelo I - Prefácio" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Oração Eucarística II - Modelo I - Consagração" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Oração Eucarística II - Ofertório, intercessões, doxologia" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Oração Eucarística II - Modelo II - Prefácio" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Oração Eucarística II - Modelo II - Consagração" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Oração Eucarística IV - Prefácio" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Pai Nosso" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Para ti, morada santa" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Pentecostes" referencia_biblica="" templo_liturgico="T. Pentecostes" pdf_path=""/>
+    <cantico nome="Por amor dos meus amigos" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Por Ti eu chamo, Senhor" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Porque conjuram as nações?" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Porque é que esta noite? - Cântico das crianças" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Porque o meu jugo é suave" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Precónio Pascal" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Precónio Pascal I" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Quando dormia" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Quando Israel era menino" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Quando Israel saiu do Egipto" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Quando o Senhor" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Que estupendo, que alegria!" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Quem é essa que sobe do deserto?" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Quem nos separará?" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Quero andar, mãe, a Jerusalém" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Quero cantar" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Ressuscitou" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Roubaste-me o coração" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Salve, Rainha" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Salve, Rainha dos céus" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Santo (Palomeras 65)" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Santo (Hebreu)" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Santo (Palestina 74)" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Santo (Roma 77)" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Santo (1982)" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Santo (1988)" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Se hoje escutardes a sua voz" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Se me refugiei no Senhor" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Se o Senhor não constrói a casa" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Senhor, ajuda-me a não duvidar de ti" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Senhor, escuta a minha oração" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Senhor, não me corrijas na tua cólera" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Senhor, Tu me perscrutas" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Senta-te, solitário e silencioso" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Sequência do Corpus Christi" referencia_biblica="" templo_liturgico="T. Pentecostes" pdf_path=""/>
+    <cantico nome="Sermão da Montanha" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Shemá Israel" referencia_biblica="" templo_liturgico="T. Pentecostes" pdf_path=""/>
+    <cantico nome="Shlom Lej Mariam" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Sião, mãe dos povos" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Sola a solo" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Stabat mater dolorosa" referencia_biblica="" templo_liturgico="T. Quaresma" pdf_path=""/>
+    <cantico nome="Te Deum" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Tomar-vos-ei dentre as nações" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Tu cobriste de vergonha a morte" referencia_biblica="" templo_liturgico="T. Páscoa" pdf_path=""/>
+    <cantico nome="Tu és a minha esperança, Senhor" referencia_biblica="" templo_liturgico="T. Advento_T. Quaresma" pdf_path=""/>
+    <cantico nome="Tu és formoso" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Tu me ensinarás o caminho da vida" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="Tu me seduziste, Senhor" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Um grande sinal" referencia_biblica="" templo_liturgico="T. Advento_T. Pentecostes" pdf_path=""/>
+    <cantico nome="Um rebento brota do tronco de Jessé" referencia_biblica="" templo_liturgico="T. Natal_T. Pentecostes" pdf_path=""/>
+    <cantico nome="Uri, uri, urá" referencia_biblica="" templo_liturgico="T. Natal" pdf_path=""/>
+    <cantico nome="Vamos já, pastores" referencia_biblica="" templo_liturgico="T. Natal" pdf_path=""/>
+    <cantico nome="Vem do Líbano" referencia_biblica="Can 4, 8?" templo_liturgico="Tempo Comum" pdf_path=""/>
+    <cantico nome="Vem o Senhor" referencia_biblica="" templo_liturgico="T. Advento_T. Pentecostes" pdf_path=""/>
+    <cantico nome="Vem, Espírito Santo - Sequência de Pentecostes" referencia_biblica="" templo_liturgico="T. Pentecostes" pdf_path=""/>
+    <cantico nome="Vem, Filho do Homem" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="Veni Creator" referencia_biblica="" templo_liturgico="T. Pentecostes" pdf_path=""/>
+    <cantico nome="Ver-te-ão os reis - Segundo cântico do Servo" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Virgem da Maravilha" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Vivei alegres" referencia_biblica="" templo_liturgico="T. Advento" pdf_path=""/>
+    <cantico nome="Vós sois a luz do mundo" referencia_biblica="" templo_liturgico="" pdf_path=""/>
+    <cantico nome="Zaqueu" referencia_biblica="" templo_liturgico="" pdf_path=""/>
 </canticos>
