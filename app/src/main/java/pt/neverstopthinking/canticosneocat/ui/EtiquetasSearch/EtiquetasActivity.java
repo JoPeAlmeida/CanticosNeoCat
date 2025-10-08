@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,7 +55,7 @@ public class EtiquetasActivity extends AppCompatActivity implements EtiquetasAda
                 return false;
             }
         });
-        etiquetasViewModel = ViewModelProviders.of(this).get(EtiquetasViewModel.class);
+        etiquetasViewModel = new ViewModelProvider(this).get(EtiquetasViewModel.class);
         etiquetasViewModel.getEtiquetas().observe(this, etiquetaCanticoPairs -> {
 
             etiquetasAdapter.updateEtiquetas(CanticoEtiquetaJoin.groupCanticos(etiquetaCanticoPairs));

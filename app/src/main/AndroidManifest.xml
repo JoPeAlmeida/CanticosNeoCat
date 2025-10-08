@@ -9,12 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.EtiquetasSearch.EtiquetasActivity"></activity>
+        <activity android:name=".ui.EtiquetasSearch.EtiquetasActivity"
+            android:exported="false"/>
         <activity
             android:name=".ui.AZSearch.AZActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".ui.Cantico.CanticoActivity" />
-        <activity android:name=".ui.MainActivity">
+            android:launchMode="singleTop"
+            android:exported="false"/>
+        <activity android:name=".ui.Cantico.CanticoActivity"
+            android:exported="false"/>
+        <activity android:name=".ui.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

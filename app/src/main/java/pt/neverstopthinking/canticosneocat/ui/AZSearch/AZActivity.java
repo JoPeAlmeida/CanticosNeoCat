@@ -2,7 +2,7 @@ package pt.neverstopthinking.canticosneocat.ui.AZSearch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,7 +55,7 @@ public class AZActivity extends AppCompatActivity implements AZCanticoAdapter.On
             }
         });
 
-        canticoListViewModel = ViewModelProviders.of(this).get(CanticoListViewModel.class);
+        canticoListViewModel = new ViewModelProvider(this).get(CanticoListViewModel.class);
         canticoListViewModel.getCanticos().observe(this, canticos -> {
             azCanticoAdapter.updateCanticos(canticos);
         });

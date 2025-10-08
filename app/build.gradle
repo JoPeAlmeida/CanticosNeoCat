@@ -1,12 +1,14 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    namespace "pt.neverstopthinking.canticosneocat"
+    compileSdkVersion 36
     defaultConfig {
         applicationId "pt.neverstopthinking.canticosneocat"
         minSdkVersion 24
-        targetSdkVersion 29
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -18,33 +20,38 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    dataBinding {
-        enabled = true;
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    // Core libraries
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
-    implementation 'com.android.support:support-annotations:28.0.0'
-    def room_version = '2.1.0'
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
-    /*implementation 'org.projectlombok:lombok:1.18.8'
-    annotationProcessor 'org.projectlombok:lombok:1.18.8'*/
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    def lifecycle_version = "2.0.0"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    implementation "com.google.android.material:material:1.0.0"
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.annotation:annotation:1.9.1'
+    implementation "androidx.room:room-runtime:2.8.1"
+    annotationProcessor "androidx.room:room-compiler:2.8.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.9.4"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.9.4"
+    implementation "androidx.emoji2:emoji2:1.6.0"
+    implementation "androidx.emoji2:emoji2-views:1.6.0"
+    implementation "androidx.emoji2:emoji2-views-helper:1.6.0"
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.7.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
 }

@@ -3,7 +3,7 @@ package pt.neverstopthinking.canticosneocat.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MainViewModel mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         boolean firstStart = preferences.getBoolean("firstStart", true);

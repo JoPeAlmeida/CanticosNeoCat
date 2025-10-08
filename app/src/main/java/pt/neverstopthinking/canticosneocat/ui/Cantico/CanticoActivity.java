@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +53,7 @@ public class CanticoActivity extends AppCompatActivity implements EtiquetasAdapt
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         etiquetasAdapter = new EtiquetasAdapter();
         recyclerView.setAdapter(etiquetasAdapter);
-        canticoViewModel = ViewModelProviders.of(this, new CanticoViewModelFactory(this.getApplication(), canticoNome)).get(CanticoViewModel.class);
+        canticoViewModel = new ViewModelProvider(this, new CanticoViewModelFactory(this.getApplication(), canticoNome)).get(CanticoViewModel.class);
         canticoViewModel.getEtiquetas().observe(this, etiquetas -> {
             etiquetas.sort(CanticoEtiquetaJoin::compareTo);
             etiquetasAdapter.submitList(etiquetas);

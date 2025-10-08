@@ -7,7 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,7 +76,7 @@ public class EtiquetaFragment extends DialogFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        canticoViewModel = ViewModelProviders.of(getActivity()).get(CanticoViewModel.class);
+        canticoViewModel = new ViewModelProvider(getActivity()).get(CanticoViewModel.class);
         etiquetaNome.requestFocus();
         etiquetaNome.postDelayed(() -> {
             InputMethodManager keyboard = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
